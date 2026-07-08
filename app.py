@@ -1,159 +1,168 @@
 # ==========================================
-# CareerPilot - Student Profile Module
-# Sprint 1
+# CareerPilot - OOP Version
 # ==========================================
 
-# List to store all student profiles
-students = []
+class Student:
+    def __init__(self, name, roll_no, branch, year, career_goal):
+        self.name = name
+        self.roll_no = roll_no
+        self.branch = branch
+        self.year = year
+        self.career_goal = career_goal
+
+    def display_profile(self):
+        print(f"Name        : {self.name}")
+        print(f"Roll Number : {self.roll_no}")
+        print(f"Branch      : {self.branch}")
+        print(f"Year        : {self.year}")
+        print(f"Career Goal : {self.career_goal}")
 
 
-def create_profile():
-    """
-    Create a new student profile. 
-    """
+class StudentProfileManager:
+    def __init__(self):
+        self.students = []
 
-    print("\n===== Create Student Profile =====")
+    def create_profile(self):
+        print("===== Create Student Profile =====")
+        name = input("Enter Student Name : ").strip()
+        roll_no = input("Enter Roll Number : ").strip()
+        branch = input("Enter Branch : ").strip()
+        year = input("Enter Year : ").strip()
+        career_goal = input("Enter Career Goal : ").strip()
 
-    name = input("Enter Student Name   : ").strip()
-    roll_no = input("Enter Roll Number    : ").strip()
-    branch = input("Enter Branch         : ").strip()
-    year = input("Enter Year           : ").strip()
-    career_goal = input("Enter Career Goal   : ").strip()
+        if name == "" or roll_no == "":
+            print("Name and Roll Number cannot be empty!")
+            return
 
-    # Basic Validation
-    if name == "":
-        print("\nStudent name cannot be empty!")
-        return
+        student = Student(name, roll_no, branch, year, career_goal)
+        self.students.append(student)
+        print("Student Profile Created Successfully!")
 
-    # Create one student profile
-    student = {
-        "name": name,
-        "roll_no": roll_no,
-        "branch": branch,
-        "year": year,
-        "career_goal": career_goal
-    }
+    def view_profiles(self):
+        print("===== Student Profiles =====")
+        if len(self.students) == 0:
+            print("No student profiles found.")
+            return
 
-    # Store inside the list
-    students.append(student)
-
-    print("\n✅ Student Profile Created Successfully!\n")
+        for index, student in enumerate(self.students, start=1):
+            print(f"Student {index}")
+            student.display_profile()
 
 
-def view_profiles():
-    """
-    Display all student profiles.
-    """
+class Task:
+    def __init__(self, title, due_date):
+        self.title = title
+        self.due_date = due_date
+        self.status = "Pending"
 
-    print("\n===== Student Profiles =====")
+    def mark_completed(self):
+        self.status = "Completed"
 
-    if len(students) == 0:
-        print("No student profiles found.\n")
-        return
-
-    for index, student in enumerate(students, start=1):
-
-        print(f"\nStudent {index}")
-
-        print(f"Name          : {student['name']}")
-        print(f"Roll Number   : {student['roll_no']}")
-        print(f"Branch        : {student['branch']}")
-        print(f"Year          : {student['year']}")
-        print(f"Career Goal   : {student['career_goal']}")
-
-    print()
+    def display_task(self):
+        print(f"Task     : {self.title}")
+        print(f"Due Date : {self.due_date}")
+        print(f"Status   : {self.status}")
 
 
-# ===========================
-# Main Menu
-# ===========================
+class TaskManager:
+    def __init__(self):
+        self.tasks = []
+
+    def add_task(self):
+        print("===== Add Task =====")
+        title = input("Enter Task Title : ").strip()
+        due_date = input("Enter Due Date : ").strip()
+
+        if title == "":
+            print("Task title cannot be empty!")
+            return
+
+        task = Task(title, due_date)
+        self.tasks.append(task)
+        print("Task Added Successfully!")
+
+    def view_tasks(self):
+        print("===== Task List =====")
+        if len(self.tasks) == 0:
+            print("No tasks found.")
+            return
+
+        for index, task in enumerate(self.tasks, start=1):
+            print(f"Task {index}")
+            task.display_task()
+
+    def complete_task(self):
+        self.view_tasks()
+        if len(self.tasks) == 0:
+            return
+
+        task_no = int(input("Enter task number to complete : "))
+        if task_no >= 1 and task_no <= len(self.tasks):
+            self.tasks[task_no - 1].mark_completed()
+            print("Task marked as completed!")
+        else:
+            print("Invalid task number!")
+
+def student_menu(profile_manager):
+       while True:
+        print("===== Student Profile Menu =====")
+        print("1. Create Student Profile")
+        print("2. View Student Profiles")
+        print("3. Back to Main Menu")
+
+        choice = input("Enter your choice : ")
+
+        if choice == "1":
+            profile_manager.create_profile()
+        elif choice == "2":
+            profile_manager.view_profiles()
+        elif choice == "3":
+            break
+        else:
+            print("Invalid choice!")
+
+
+def task_menu(task_manager):
+    while True:
+        print("===== Task Manager Menu =====")
+        print("1. Add Task")
+        print("2. View Tasks")
+        print("3. Mark Task Completed")
+        print("4. Back to Main Menu")
+
+        choice = input("Enter your choice : ")
+
+        if choice == "1":
+            task_manager.add_task()
+        elif choice == "2":
+            task_manager.view_tasks()
+        elif choice == "3":
+            task_manager.complete_task()
+        elif choice == "4":
+            break
+        else:
+            print("Invalid choice!")
+
+
+profile_manager = StudentProfileManager()
+task_manager = TaskManager()
 
 while True:
-
+    print("" + "=" * 40)
+    print(" CareerPilot")
     print("=" * 40)
-    print("        CareerPilot")
-    print(" Student Profile Module")
-    print("=" * 40)
-
-    print("1. Create Student Profile")
-    print("2. View Student Profiles")
+    print("1. Student Profile Module")
+    print("2. Task Manager Module")
     print("3. Exit")
 
-    choice = input("\nEnter your choice : ")
+    choice = input("Enter your choice : ")
 
     if choice == "1":
-
-        create_profile()
-
+        student_menu(profile_manager)
     elif choice == "2":
-
-        view_profiles()
-
+        task_menu(task_manager)
     elif choice == "3":
-
-        print("\nThank you for using CareerPilot.")
+        print("Thank you for using CareerPilot.")
         break
-
     else:
-
-        print("\nInvalid Choice! Please try again.\n")
-def update_profile():
-    """
-    Update an existing student profile.
-    """
-
-    print("\n===== Update Student Profile =====")
-
-    if len(students) == 0:
-        print("No student profiles found.\n")
-        return
-
-    roll_no = input("Enter Roll Number to Update: ").strip()
-
-    for student in students:
-        if student["roll_no"] == roll_no:
-
-            print("\nStudent Found!")
-            print("Press Enter to keep the current value.\n")
-
-            name = input(f"Name ({student['name']}): ").strip()
-            branch = input(f"Branch ({student['branch']}): ").strip()
-            year = input(f"Year ({student['year']}): ").strip()
-            career_goal = input(f"Career Goal ({student['career_goal']}): ").strip()
-
-            if name:
-                student["name"] = name
-            if branch:
-                student["branch"] = branch
-            if year:
-                student["year"] = year
-            if career_goal:
-                student["career_goal"] = career_goal
-
-            print("\n✅ Student Profile Updated Successfully!\n")
-            return
-
-    print("\nStudent with this Roll Number not found!\n")
-
-update_profile()
-def delete_profile():
-    """
-    Delete an existing student profile.
-    """
-
-    print("\n===== Delete Student Profile =====")
-
-    if len(students) == 0:
-        print("No student profiles found.\n")
-        return
-
-    roll_no = input("Enter Roll Number to Delete: ").strip()
-
-    for student in students:
-        if student["roll_no"] == roll_no:
-            students.remove(student)
-            print("\n✅ Student Profile Deleted Successfully!\n")
-            return
-
-    print("\nStudent with this Roll Number not found!\n")
-    delete_profile()
+        print("Invalid choice!")
