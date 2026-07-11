@@ -90,6 +90,7 @@ class TaskManager:
         for index, task in enumerate(self.tasks, start=1):
             print(f"Task {index}")
             task.display_task()
+    def longest_career_goal(self)        
 
     def complete_task(self):
         self.view_tasks()
