@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Career Pilot</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header  class="header">
+
+        <h2>Career Pilot</h2>
+    
+      <nav class="navbar">
+        <a href="#home">Home</a>
+        <a href="#profile">Profile</a>
+        <a href="#tasks">task</a>
+        <a href="#coding">coding</a>    
+      </nav> 
+    </header>
+    <main>
+        <section id="home" class="hero">
+            <div class="hero-content">
+            <h1>Build Your Career<br>Track Your Progress.</h1>
+        </div>
+        <P>
+            Career Pilot helps student manage their profile,
+            track daily tasks and monitor coding practice
+        </P>
+        <a class="btn" href="#profile">Get Started</a>
+
+        <h3>Your Career Journey</h3>
+        <div class="hero-card">
+        <ul>
+            <li>Student Profile</li>
+            <li>Task Management</li>
+            <li>Coding Practice</li>
+        </ul>
+        </div>
+        </section>
+        <hr>
+        <section class="dashbaord">
+            <h2>Career Pilot Dashboard</h2>
+            <span class="dash">
+
+            <div class="dashboard-card1">
+                <h3>Student Profile</h3>
+                <p>Create and manage your career profile.</p>
+                <a href="#profile">Open profile</a>
+            </div>
+            <div class="dashboard-card2" >
+            
+                <h3>Task Manager</h3>
+                <p>Organize and track your daily tasks.</p>
+                <a href="">View Tasks</a>
+            </div>
+                <div class="dashboard-card3">
+                    <h3>Coding Practice</h3>
+                    <p>Track your coding problem progress.</p>
+                    <a href="">View Tracker</a>   
+                </div>
+                </span>
+        </section>
+<hr>
+        <section>
+            <h2>Student Profile</h2>
+            <p>Create your CareerPilot student profile.</p>
+
+            <form action="">
+                <label for="">Student Name</label>
+                <br>
+                <input type="text" id="studentName" placeholder="Enter your name">
+                 <br>
+                 
+                <label for="">Branch</label>
+                <br>
+                <input type="text"  id="branch" placeholder="Enter Branch">
+                <br>
+
+                <label for="">Year</label>
+                <br>
+                <input type="number" id="year" placeholder="Enter year">
+                <br>
+
+                <label for="">Career Goal</label>
+                <br>
+                <input type="text" id="careerGoal" placeholder="Example:software Engineer">
+                <br><br>
+
+                <button type="button" id="createprofileBtn" onclick="profile()">Create Profile</button>
+            </form>
+        </section>
+        <hr>
+
+        <section id="tasks">
+            <h2>Task Manager</h2>
+            <p>Plan your tasks and track your progress.</p>
+            <form action="">
+                <label for="">Task Title</label>
+                <br>
+                <input type="text" placeholder="Enter Task title">
+
+                <br><br>
+
+                <label>Due Date</label>
+                <br>
+                <input type="Date">
+
+
+
+                <button type="button">Add Task</button>   
+            </form>
+            <div>
+                
+                    <h4>complete python assignment </h4>
+                    <p>Due Date :</p>
+                    <p>Status: Pending</p>
+
+                    <h4>practice DSA</h4>
+                    <p>Due Date :</p>
+                    <p>status:completed</p>
+            </div>
+        </section>
+        <hr>
+
+        <section id="coding">
+            <h2>Coding Practice Tracker</h2>
+            <p>Track coding problems from different platform.</p>
+            <form action="">
+                <label for="">problem title</label>
+                <br>
+                <input type="text" placeholder="Enter Title">
+                <br><br>
+                <label for="">platform</label>
+                <br>
+                <input type="text" placeholder="platform">
+                <br><br>
+                <label for="">Difficulty</label>
+                <br>
+                <select>
+                    <option>Easy</option>
+                    <option>Medium</option>
+                    <option>Hard</option>
+                </select>
+                <br><br>
+                <label for="">Status
+                    <br>
+                    <select>
+                        <option>solved</option>
+                        <option>unsolved</option>
+                    </select>
+                    <button type="button">Add Problem</button>
+
+                    <table border="1">
+                        <thead>
+                        <tr>
+                            <th>Problem</th>
+                            <th>Platform</th>
+                            <th>Difficulty</th>
+                            <th>Status</th>
+                        </tr>
+                       </thead>
+                       <tbody>
+                        <tr>
+                            <td>Two sum</td>
+                            <td>leetCode</td>
+                            <td>Easy</td>
+                            <td>completed</td>
+                        </tr>
+                        <tr>
+                            <td>Valid Anagram</td>
+                            <td>LeetCode</td>
+                            <td>Easy</td>
+                            <td>Pending</td>
+                        </tr>
+                       </tbody>  
+                    </table>
+                </label>
+
+            </form>
+               
+
+        </section>
+        <hr>
+    </main> 
+    <footer>
+        <h4>CareerPilot</h4>
+        <p>Bulid skills.Track Progress.Achieve your Career Goals</p>
+    </footer>
+   <script src="script.js"></script>
+
+</body>
+</html>
